@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nika Sapoz - Links</title>
+    <!-- FontAwesome לאייקונים -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --bg-color: #0b0e14;
+            --card-bg: #161b22;
+            --card-hover: #21262d;
+            --accent-color: #53fc18; /* ירוק Kick */
+            --yt-color: #ff0000;
+            --text-color: #ffffff;
+            --text-secondary: #8b949e;
+            --border-color: #30363d;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            display: flex;
+            justify-content: center;
+            padding: 40px 16px;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 480px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .profile-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--accent-color);
+            box-shadow: 0 0 20px rgba(83, 252, 24, 0.25);
+        }
+
+        .profile-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .profile-bio {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            text-align: center;
+            line-height: 1.5;
+        }
+
+        .links-list {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .link-card {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 16px 20px;
+            border-radius: 12px;
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .link-card:hover {
+            background-color: var(--card-hover);
+            border-color: var(--accent-color);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .link-content {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .link-icon {
+            font-size: 1.3rem;
+            width: 25px;
+            text-align: center;
+        }
+
+        .badge-latest {
+            background-color: var(--yt-color);
+            color: #fff;
+            font-size: 0.75rem;
+            padding: 3px 8px;
+            border-radius: 6px;
+            font-weight: bold;
+        }
+
+        .socials-container {
+            display: flex;
+            gap: 16px;
+            margin-top: 10px;
+        }
+
+        .social-icon {
+            color: var(--text-secondary);
+            font-size: 1.5rem;
+            transition: color 0.2s;
+        }
+
+        .social-icon:hover {
+            color: var(--accent-color);
+        }
+
+        footer {
+            margin-top: 20px;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- תמונת פרופיל -->
+    <img id="avatar" class="profile-avatar" src="https://files.kick.com/images/user/15317769/profile_image/conversion/66718420-b8c7-43c2-a9b0-27909eb62ff7-fullsize.webp" alt="Nika Sapoz">
+    
+    <!-- שם וביו -->
+    <h1 class="profile-title">Nika Sapoz</h1>
+    <p class="profile-bio">היי קוראים לי ניקה ואני מסטרימה בקיק! מוזמנים לעקוב ולהצטרף לקהילה שלי ברשתות.</p>
+
+    <!-- רשימת קישורים -->
+    <div class="links-list">
+        <!-- Kick -->
+        <a href="https://kick.com/nikasapoz" target="_blank" class="link-card">
+            <div class="link-content">
+                <i class="fa-solid fa-headset link-icon" style="color: #53fc18;"></i>
+                <span>Kick - הערוץ הרשמי שלי</span>
+            </div>
+            <i class="fa-solid fa-chevron-left"></i>
+        </a>
+
+        <!-- YouTube -->
+        <a href="https://www.youtube.com/@nikasapoz" target="_blank" class="link-card">
+            <div class="link-content">
+                <i class="fa-brands fa-youtube link-icon" style="color: #ff0000;"></i>
+                <span>YouTube - הערוץ הרשמי</span>
+            </div>
+            <i class="fa-solid fa-chevron-left"></i>
+        </a>
+
+        <!-- סרטון אחרון ביוטיוב -->
+        <a href="https://www.youtube.com/@nikasapoz/videos" target="_blank" class="link-card">
+            <div class="link-content">
+                <i class="fa-solid fa-play link-icon" style="color: #ff0000;"></i>
+                <span>צפו בסרטון האחרון שעלה ליוטיוב</span>
+            </div>
+            <span class="badge-latest">חדש</span>
+        </a>
+
+        <!-- סרטון הכי נצפה -->
+        <a href="https://www.youtube.com/@nikasapoz/videos?view=0&sort=p" target="_blank" class="link-card">
+            <div class="link-content">
+                <i class="fa-solid fa-fire link-icon" style="color: #ffaa00;"></i>
+                <span>הסרטון הנצפה ביותר 🔥</span>
+            </div>
+            <i class="fa-solid fa-chevron-left"></i>
+        </a>
+
+        <!-- Discord -->
+        <a href="https://discord.gg/tDYG8XZ6U4" target="_blank" class="link-card">
+            <div class="link-content">
+                <i class="fa-brands fa-discord link-icon" style="color: #5865F2;"></i>
+                <span>הצטרפו לשרת ה-Discord</span>
+            </div>
+            <i class="fa-solid fa-chevron-left"></i>
+        </a>
+
+        <!-- Instagram -->
+        <a href="https://www.instagram.com/veronika_sapoz/" target="_blank" class="link-card">
+            <div class="link-content">
+                <i class="fa-brands fa-instagram link-icon" style="color: #E1306C;"></i>
+                <span>Instagram</span>
+            </div>
+            <i class="fa-solid fa-chevron-left"></i>
+        </a>
+    </div>
+
+    <!-- כפתורי סושיאל קטנים -->
+    <div class="socials-container">
+        <a href="https://kick.com/nikasapoz" target="_blank" class="social-icon"><i class="fa-solid fa-headset"></i></a>
+        <a href="https://www.youtube.com/@nikasapoz" target="_blank" class="social-icon"><i class="fa-brands fa-youtube"></i></a>
+        <a href="https://www.instagram.com/veronika_sapoz/" target="_blank" class="social-icon"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://discord.gg/tDYG8XZ6U4" target="_blank" class="social-icon"><i class="fa-brands fa-discord"></i></a>
+    </div>
+
+    <footer>
+        <p>© Nika Sapoz | כל הזכויות שמורות</p>
+    </footer>
+</div>
+
+</body>
+</html>
