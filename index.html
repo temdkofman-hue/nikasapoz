@@ -81,12 +81,12 @@
             mix-blend-mode: screen;
         }
 
-        /* התיבה/הריבוע המרכזי המוגדל */
+        /* התיבה/הריבוע המרכזי المוגדל */
         .main-wrapper {
             position: relative;
             z-index: 2;
             width: 100%;
-            max-width: 580px; /* הוגדל ל-580px */
+            max-width: 580px;
             background: rgba(15, 18, 26, 0.8);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
@@ -108,7 +108,7 @@
         }
 
         .profile-avatar {
-            width: 180px; /* הוגדל ל-180px */
+            width: 180px;
             height: 180px;
             border-radius: 50%;
             object-fit: cover;
@@ -146,7 +146,6 @@
             z-index: 3;
         }
 
-        /* הסתרה קלה כשהלייב כבוי */
         .live-badge.hidden {
             display: none !important;
         }
@@ -204,9 +203,7 @@
             transition: all 0.25s ease-in-out;
         }
 
-        /* אפקטי POPUP + צבעי זוהר ייחודיים בעת מעבר עכבר */
-        
-        /* Kick - ירוק */
+        /* אפקטי POPUP + צבעי זוהר ייחודיים לכרטיסיות בעת מעבר עכבר */
         .link-card.kick:hover {
             background-color: var(--card-hover);
             border-color: rgba(83, 252, 24, 0.7);
@@ -214,7 +211,6 @@
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), 0 0 20px rgba(83, 252, 24, 0.4);
         }
 
-        /* YouTube - אדום */
         .link-card.youtube:hover {
             background-color: var(--card-hover);
             border-color: rgba(255, 0, 0, 0.7);
@@ -222,7 +218,6 @@
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 0, 0, 0.4);
         }
 
-        /* Discord - כחול/סגול */
         .link-card.discord:hover {
             background-color: var(--card-hover);
             border-color: rgba(88, 101, 242, 0.7);
@@ -230,7 +225,6 @@
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), 0 0 20px rgba(88, 101, 242, 0.4);
         }
 
-        /* Instagram - ורוד */
         .link-card.instagram:hover {
             background-color: var(--card-hover);
             border-color: rgba(225, 48, 108, 0.7);
@@ -257,8 +251,10 @@
             width: 24px;
             height: 24px;
             fill: var(--kick-color);
+            transition: fill 0.2s ease;
         }
 
+        /* כפתורי סושיאל קטנים למטה */
         .socials-container {
             display: flex;
             gap: 24px;
@@ -268,15 +264,46 @@
         .social-icon {
             color: var(--text-secondary);
             font-size: 1.7rem;
-            transition: all 0.2s;
+            transition: all 0.25s ease;
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
-        .social-icon:hover {
+        /* צבעים מותאמים לכל סושיאל קטן בעת Hover */
+        .social-icon.kick:hover {
             color: var(--kick-color);
-            transform: translateY(-3px) scale(1.1);
+            transform: translateY(-3px) scale(1.2);
+            filter: drop-shadow(0 0 8px rgba(83, 252, 24, 0.8));
+        }
+
+        .social-icon.kick:hover .kick-svg-icon {
+            fill: var(--kick-color);
+        }
+
+        .social-icon.youtube:hover {
+            color: var(--youtube-color);
+            transform: translateY(-3px) scale(1.2);
+            filter: drop-shadow(0 0 8px rgba(255, 0, 0, 0.8));
+        }
+
+        .social-icon.instagram:hover {
+            color: var(--instagram-color);
+            transform: translateY(-3px) scale(1.2);
+            filter: drop-shadow(0 0 8px rgba(225, 48, 108, 0.8));
+        }
+
+        .social-icon.discord:hover {
+            color: var(--discord-color);
+            transform: translateY(-3px) scale(1.2);
+            filter: drop-shadow(0 0 8px rgba(88, 101, 242, 0.8));
+        }
+
+        /* האייקון הרגיל של קיק בסושיאל הקטן בצבע אפור ברירת מחדל */
+        .social-icon .kick-svg-icon {
+            fill: var(--text-secondary);
+            width: 26px;
+            height: 26px;
         }
 
         footer {
@@ -306,7 +333,6 @@
         <a href="https://kick.com/nikasapoz" target="_blank" class="avatar-container">
             <img id="avatar" class="profile-avatar" src="avatar.jpg" alt="Nika Sapoz">
             
-            <!-- באדג' לייב (להסתיר מתי שאינך בלייב, פשוט מוסיפים את הקלאס hidden) -->
             <div class="live-badge" id="liveBadge">
                 <span class="live-dot"></span>
                 STREAMING NOW
@@ -360,16 +386,16 @@
             </a>
         </div>
 
-        <!-- כפתורי סושיאל קטנים -->
+        <!-- כפתורי סושיאל קטנים עם הצבעים הייחודיים ב-Hover -->
         <div class="socials-container">
-            <a href="https://kick.com/nikasapoz" target="_blank" class="social-icon">
-                <svg class="kick-svg-icon" viewBox="0 0 24 24" style="width: 24px; height: 24px;">
+            <a href="https://kick.com/nikasapoz" target="_blank" class="social-icon kick" title="Kick">
+                <svg class="kick-svg-icon" viewBox="0 0 24 24">
                     <path d="M3 3h6v5.25L13.5 3H21l-6.75 7.5L21 21h-7.5L9 15.75V21H3V3z"/>
                 </svg>
             </a>
-            <a href="https://www.youtube.com/@nikasapoz" target="_blank" class="social-icon"><i class="fa-brands fa-youtube"></i></a>
-            <a href="https://www.instagram.com/veronika_sapoz/" target="_blank" class="social-icon"><i class="fa-brands fa-instagram"></i></a>
-            <a href="https://discord.gg/tDYG8XZ6U4" target="_blank" class="social-icon"><i class="fa-brands fa-discord"></i></a>
+            <a href="https://www.youtube.com/@nikasapoz" target="_blank" class="social-icon youtube" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+            <a href="https://www.instagram.com/veronika_sapoz/" target="_blank" class="social-icon instagram" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://discord.gg/tDYG8XZ6U4" target="_blank" class="social-icon discord" title="Discord"><i class="fa-brands fa-discord"></i></a>
         </div>
 
         <footer>
@@ -386,8 +412,7 @@
             flashlight.style.top = e.clientY + 'px';
         });
 
-        // הגדרת מצב לייב: 
-        // לשנות ל-isLive = false כשאת לא בלייב כדי להסתיר את הבאדג'
+        // הגדרת מצב לייב (לשנות ל-isLive = false כשאת לא בלייב כדי להסתיר)
         const isLive = true; 
         const liveBadge = document.getElementById('liveBadge');
         if (!isLive) {
