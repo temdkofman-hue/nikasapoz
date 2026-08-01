@@ -8,14 +8,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         :root {
-            --bg-gradient: radial-gradient(circle at top, #1a2332 0%, #0b0e14 100%);
-            --card-bg: rgba(22, 27, 34, 0.75);
-            --card-hover: rgba(33, 38, 45, 0.9);
+            --card-bg: rgba(15, 18, 25, 0.75);
+            --card-hover: rgba(25, 30, 42, 0.9);
             --accent-color: #53fc18; /* ירוק Kick */
             --text-color: #ffffff;
-            --text-secondary: #9da7b3;
-            --border-color: rgba(255, 255, 255, 0.1);
-            --border-hover: rgba(83, 252, 24, 0.5);
+            --text-secondary: #c0c7d0;
+            --border-color: rgba(255, 255, 255, 0.15);
+            --border-hover: rgba(83, 252, 24, 0.6);
         }
 
         * {
@@ -26,8 +25,8 @@
         }
 
         body {
-            background: var(--bg-gradient);
-            background-attachment: fixed;
+            background: linear-gradient(rgba(10, 12, 16, 0.65), rgba(10, 12, 16, 0.85)), url('bg.jpg') no-repeat center center fixed;
+            background-size: cover;
             color: var(--text-color);
             display: flex;
             justify-content: center;
@@ -50,7 +49,7 @@
             border-radius: 50%;
             object-fit: cover;
             border: 3px solid var(--accent-color);
-            box-shadow: 0 0 25px rgba(83, 252, 24, 0.3);
+            box-shadow: 0 0 25px rgba(83, 252, 24, 0.4);
             transition: transform 0.3s ease;
             background-color: #161b22;
         }
@@ -63,6 +62,7 @@
             font-size: 1.8rem;
             font-weight: 700;
             letter-spacing: 0.5px;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.8);
         }
 
         .profile-bio {
@@ -71,6 +71,7 @@
             text-align: center;
             line-height: 1.5;
             max-width: 90%;
+            text-shadow: 0 2px 6px rgba(0,0,0,0.8);
         }
 
         .links-list {
@@ -85,8 +86,8 @@
             align-items: center;
             justify-content: space-between;
             background-color: var(--card-bg);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             border: 1px solid var(--border-color);
             padding: 16px 20px;
             border-radius: 14px;
@@ -100,7 +101,7 @@
             background-color: var(--card-hover);
             border-color: var(--border-hover);
             transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4), 0 0 15px rgba(83, 252, 24, 0.15);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5), 0 0 15px rgba(83, 252, 24, 0.2);
         }
 
         .link-content {
@@ -125,6 +126,7 @@
             color: var(--text-secondary);
             font-size: 1.6rem;
             transition: all 0.2s;
+            text-shadow: 0 2px 6px rgba(0,0,0,0.8);
         }
 
         .social-icon:hover {
@@ -137,13 +139,14 @@
             font-size: 0.85rem;
             color: var(--text-secondary);
             text-align: center;
+            text-shadow: 0 2px 6px rgba(0,0,0,0.8);
         }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <!-- הלוגו האישי שלך בערוץ (מתוך היוטיוב והקיק) -->
+    <!-- הלוגו האישי שלך בערוץ -->
     <img id="avatar" class="profile-avatar" src="https://yt3.googleusercontent.com/ytc/AIdro_k6K0jDqG8p2Y-XG_mXN7A6M0A5X2Y1=s176-c-k-c0x00ffffff-no-rj" alt="Nika Sapoz" onerror="this.src='https://files.kick.com/images/user/15317769/profile_image/conversion/66718420-b8c7-43c2-a9b0-27909eb62ff7-fullsize.webp';">
     
     <!-- שם וביו -->
