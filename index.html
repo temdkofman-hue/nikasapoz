@@ -15,11 +15,12 @@
             --border-color: rgba(255, 255, 255, 0.12);
             --purple-glow: rgba(157, 78, 221, 0.45);
 
-            /* צבעים ייחודיים לרשתות */
+            /* צבעים ייחודיים לרשתות ולתרומות */
             --kick-color: #53fc18;
             --youtube-color: #ff0000;
             --discord-color: #5865F2;
             --instagram-color: #E1306C;
+            --donate-color: #ffb703;
         }
 
         * {
@@ -81,7 +82,7 @@
             mix-blend-mode: screen;
         }
 
-        /* התיבה/הריבוע המרכזי المוגדל */
+        /* התיבה/הריבוע המרכזי */
         .main-wrapper {
             position: relative;
             z-index: 2;
@@ -100,7 +101,7 @@
             gap: 24px;
         }
 
-        /* מעטפת האווטאר המוגדל */
+        /* מעטפת האווטאר */
         .avatar-container {
             position: relative;
             display: inline-block;
@@ -124,7 +125,7 @@
             box-shadow: 0 0 45px rgba(83, 252, 24, 0.75);
         }
 
-        /* באדג' STREAMING NOW - ממוקם למעלה ימינה ליד הלוגו */
+        /* באדג' STREAMING NOW */
         .live-badge {
             position: absolute;
             top: 6px;
@@ -201,9 +202,10 @@
             font-weight: 600;
             font-size: 1.1rem;
             transition: all 0.25s ease-in-out;
+            cursor: pointer;
         }
 
-        /* אפקטי POPUP + צבעי זוהר ייחודיים לכרטיסיות בעת מעבר עכבר */
+        /* אפקטי POPUP בעת מעבר עכבר */
         .link-card.kick:hover {
             background-color: var(--card-hover);
             border-color: rgba(83, 252, 24, 0.7);
@@ -230,6 +232,13 @@
             border-color: rgba(225, 48, 108, 0.7);
             transform: translateY(-5px) scale(1.02);
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), 0 0 20px rgba(225, 48, 108, 0.4);
+        }
+
+        .link-card.donate:hover {
+            background-color: var(--card-hover);
+            border-color: rgba(255, 183, 3, 0.7);
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 183, 3, 0.4);
         }
 
         .link-content {
@@ -270,7 +279,6 @@
             justify-content: center;
         }
 
-        /* צבעים מותאמים לכל סושיאל קטן בעת Hover */
         .social-icon.kick:hover {
             color: var(--kick-color);
             transform: translateY(-3px) scale(1.2);
@@ -299,11 +307,151 @@
             filter: drop-shadow(0 0 8px rgba(88, 101, 242, 0.8));
         }
 
-        /* האייקון הרגיל של קיק בסושיאל הקטן בצבע אפור ברירת מחדל */
         .social-icon .kick-svg-icon {
             fill: var(--text-secondary);
             width: 26px;
             height: 26px;
+        }
+
+        /* ========================================= */
+        /* עיצוב חלון קופץ (POPUP MODAL) לתרומות */
+        /* ========================================= */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            z-index: 999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .modal-content {
+            background: rgba(20, 25, 36, 0.95);
+            border: 1px solid rgba(255, 183, 3, 0.4);
+            border-radius: 24px;
+            width: 90%;
+            max-width: 480px;
+            padding: 30px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(255, 183, 3, 0.2);
+            transform: scale(0.85);
+            transition: transform 0.3s ease;
+            position: relative;
+            max-height: 85vh;
+            overflow-y: auto;
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: scale(1);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 18px;
+            left: 18px;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: #fff;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+        }
+
+        .modal-close:hover {
+            background: rgba(255, 0, 0, 0.6);
+        }
+
+        .modal-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .modal-header i {
+            font-size: 2.5rem;
+            color: var(--donate-color);
+            margin-bottom: 10px;
+        }
+
+        .modal-header h2 {
+            font-size: 1.6rem;
+            color: #fff;
+        }
+
+        .btn-donate-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #ffb703, #fb8500);
+            color: #000;
+            font-weight: 700;
+            text-decoration: none;
+            padding: 14px 20px;
+            border-radius: 14px;
+            text-align: center;
+            margin-bottom: 24px;
+            box-shadow: 0 4px 15px rgba(255, 183, 3, 0.3);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn-donate-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 183, 3, 0.5);
+        }
+
+        .donators-title {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 8px;
+        }
+
+        .donators-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .donator-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 12px 16px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .donator-name {
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .donator-amount {
+            color: var(--donate-color);
+            font-weight: 700;
         }
 
         footer {
@@ -316,20 +464,20 @@
 </head>
 <body>
 
-    <!-- סרטון רקע שרץ בלופים -->
+    <!-- סרטון רקע -->
     <video class="video-background" autoplay loop muted playsinline>
         <source src="bg1.mov" type="video/mp4">
         <source src="bg1.mov" type="video/quicktime">
     </video>
     <div class="video-overlay"></div>
 
-    <!-- אלמנט הפנס הסגול העוקב -->
+    <!-- אפקט הפנס הסגול -->
     <div class="cursor-flashlight" id="flashlight"></div>
 
-    <!-- הריבוע המרכזי המוגדל -->
+    <!-- הריבוע המרכזי -->
     <div class="main-wrapper">
         
-        <!-- לוגו מוגדל שלחיצה עליו מעבירה ל-Kick + באדג' STREAMING NOW בפינה הימנית העליונה -->
+        <!-- לוגו מוגדל + באדג' STREAMING NOW -->
         <a href="https://kick.com/nikasapoz" target="_blank" class="avatar-container">
             <img id="avatar" class="profile-avatar" src="avatar.jpg" alt="Nika Sapoz">
             
@@ -343,7 +491,7 @@
         <h1 class="profile-title">Nika Sapoz</h1>
         <p class="profile-bio">היי קוראים לי ניקה ואני מסטרימה בקיק! מוזמנים לעקוב ולהצטרף לקהילה שלי ברשתות.</p>
 
-        <!-- רשימת קישורים עם אפקט פופ-אפ וצבעי זוהר מותאמים -->
+        <!-- רשימת קישורים -->
         <div class="links-list">
             <!-- Kick - ירוק -->
             <a href="https://kick.com/nikasapoz" target="_blank" class="link-card kick">
@@ -357,6 +505,15 @@
                 </div>
                 <i class="fa-solid fa-chevron-left"></i>
             </a>
+
+            <!-- כפתור תרומות ורשימת תורמים - פותח POPUP -->
+            <div class="link-card donate" id="openDonateModal">
+                <div class="link-content">
+                    <i class="fa-solid fa-hand-holding-dollar link-icon" style="color: var(--donate-color);"></i>
+                    <span>תרומות ורשימת התורמים</span>
+                </div>
+                <i class="fa-solid fa-chevron-left"></i>
+            </div>
 
             <!-- YouTube - אדום -->
             <a href="https://www.youtube.com/@nikasapoz" target="_blank" class="link-card youtube">
@@ -386,7 +543,7 @@
             </a>
         </div>
 
-        <!-- כפתורי סושיאל קטנים עם הצבעים הייחודיים ב-Hover -->
+        <!-- כפתורי סושיאל קטנים למטה -->
         <div class="socials-container">
             <a href="https://kick.com/nikasapoz" target="_blank" class="social-icon kick" title="Kick">
                 <svg class="kick-svg-icon" viewBox="0 0 24 24">
@@ -403,6 +560,48 @@
         </footer>
     </div>
 
+    <!-- ========================================= -->
+    <!-- ה-POPUP של התרומות והתורמים -->
+    <!-- ========================================= -->
+    <div class="modal-overlay" id="donateModal">
+        <div class="modal-content">
+            <button class="modal-close" id="closeDonateModal"><i class="fa-solid fa-xmark"></i></button>
+            
+            <div class="modal-header">
+                <i class="fa-solid fa-crown"></i>
+                <h2>תמיכה בערוץ ורשימת תורמים</h2>
+            </div>
+
+            <!-- קישור לעמוד התרומה שלך (למשל StreamElements / PayPal / PayBox) -->
+            <a href="https://streamelements.com/nikasapoz/tip" target="_blank" class="btn-donate-link">
+                <i class="fa-solid fa-heart"></i>
+                לחצו כאן לתרומה לערוץ
+            </a>
+
+            <div class="donators-title">תורמים מובילים:</div>
+            
+            <div class="donators-list">
+                <!-- אפשר לערוך/להוסיף/להסיר תורמים כאן -->
+                <div class="donator-item">
+                    <span class="donator-name"><i class="fa-solid fa-trophy" style="color: #ffd700;"></i> TopDonator1</span>
+                    <span class="donator-amount">₪500</span>
+                </div>
+                <div class="donator-item">
+                    <span class="donator-name"><i class="fa-solid fa-medal" style="color: #c0c0c0;"></i> GamerPro</span>
+                    <span class="donator-amount">₪250</span>
+                </div>
+                <div class="donator-item">
+                    <span class="donator-name"><i class="fa-solid fa-award" style="color: #cd7f32;"></i> Anonymous</span>
+                    <span class="donator-amount">₪100</span>
+                </div>
+                <div class="donator-item">
+                    <span class="donator-name">User123</span>
+                    <span class="donator-amount">₪50</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- סקריפטים -->
     <script>
         // מעקב אחרי העכבר לאפקט פנס סגול
@@ -412,12 +611,32 @@
             flashlight.style.top = e.clientY + 'px';
         });
 
-        // הגדרת מצב לייב (לשנות ל-isLive = false כשאת לא בלייב כדי להסתיר)
+        // הגדרת מצב לייב
         const isLive = true; 
         const liveBadge = document.getElementById('liveBadge');
         if (!isLive) {
             liveBadge.classList.add('hidden');
         }
+
+        // ניהול ה-POPUP של התרומות
+        const openDonateModal = document.getElementById('openDonateModal');
+        const closeDonateModal = document.getElementById('closeDonateModal');
+        const donateModal = document.getElementById('donateModal');
+
+        openDonateModal.addEventListener('click', () => {
+            donateModal.classList.add('active');
+        });
+
+        closeDonateModal.addEventListener('click', () => {
+            donateModal.classList.remove('active');
+        });
+
+        // סגירה בלחיצה על הרקע מחוץ לחלון
+        donateModal.addEventListener('click', (e) => {
+            if (e.target === donateModal) {
+                donateModal.classList.remove('active');
+            }
+        });
     </script>
 
 </body>
