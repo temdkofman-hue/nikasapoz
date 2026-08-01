@@ -10,6 +10,10 @@
 
     <!-- FontAwesome לאייקונים -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- פונט מודרני בולט ללוגו הטקסט -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800;900&display=swap" rel="stylesheet">
+
     <style>
         :root {
             --card-bg: rgba(22, 27, 38, 0.65);
@@ -86,17 +90,35 @@
             mix-blend-mode: screen;
         }
 
-        /* לוגו עליון קטן מעל התיבה המרכזית */
-        .site-top-logo {
+        /* לוגו הכתובת/טקסט של המותג בחלק העליון של האתר */
+        .brand-logo-header {
             position: relative;
             z-index: 2;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 0 20px rgba(157, 78, 221, 0.4);
-            margin-bottom: 20px;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .brand-logo-text {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.8rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #ffffff;
+            text-shadow: 
+                0 0 10px rgba(157, 78, 221, 0.8),
+                0 0 20px rgba(157, 78, 221, 0.6),
+                0 0 30px rgba(157, 78, 221, 0.4);
+            background: linear-gradient(180deg, #ffffff 30%, #c8b6ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
+
+        .brand-logo-header:hover .brand-logo-text {
+            transform: scale(1.05);
+            filter: drop-shadow(0 0 15px rgba(157, 78, 221, 0.9));
         }
 
         /* התיבה/הריבוע המרכזי */
@@ -343,8 +365,10 @@
     <!-- אפקט הפנס הסגול -->
     <div class="cursor-flashlight" id="flashlight"></div>
 
-    <!-- לוגו האתר העליון -->
-    <img src="avatar.jpg" alt="Logo" class="site-top-logo">
+    <!-- לוגו הכתובת בחלק העליון -->
+    <div class="brand-logo-header">
+        <span class="brand-logo-text">NIKA SAPOZ</span>
+    </div>
 
     <!-- הריבוע המרכזי -->
     <div class="main-wrapper">
