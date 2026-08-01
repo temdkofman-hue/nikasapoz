@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nika Sapoz - Links</title>
+    
+    <!-- לוגו בלשונית של הדפדפן (Favicon) -->
+    <link rel="icon" type="image/jpeg" href="avatar.jpg">
+
     <!-- FontAwesome לאייקונים -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
@@ -33,6 +37,7 @@
             background-color: #0a0c10;
             color: var(--text-color);
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             padding: 40px 16px;
@@ -79,6 +84,19 @@
             z-index: 1;
             transition: transform 0.05s ease-out;
             mix-blend-mode: screen;
+        }
+
+        /* לוגו עליון קטן מעל התיבה המרכזית */
+        .site-top-logo {
+            position: relative;
+            z-index: 2;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 20px rgba(157, 78, 221, 0.4);
+            margin-bottom: 20px;
         }
 
         /* התיבה/הריבוע המרכזי */
@@ -324,6 +342,9 @@
 
     <!-- אפקט הפנס הסגול -->
     <div class="cursor-flashlight" id="flashlight"></div>
+
+    <!-- לוגו האתר העליון -->
+    <img src="avatar.jpg" alt="Logo" class="site-top-logo">
 
     <!-- הריבוע המרכזי -->
     <div class="main-wrapper">
